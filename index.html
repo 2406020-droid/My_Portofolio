@@ -7,10 +7,19 @@
 
     <meta
       name="description"
-      content="Website biodata Haikal Muhamad Sabqi, mahasiswa Teknik Informatika Institut Teknologi Garut."
-    />
+      content="Website biodata Haikal Muhamad Sabqi, mahasiswa Teknik Informatika Institut Teknologi Garut." />
+
+    <meta name="theme-color" content="#081225" />
 
     <title>Haikal Muhamad Sabqi | Teknik Informatika</title>
+
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" href="images/haikal.png" />
+
+    <!-- TANDAI BAHWA JAVASCRIPT AKTIF (agar animasi tidak menyembunyikan konten bila JS gagal) -->
+    <script>
+      document.documentElement.classList.add("js");
+    </script>
 
     <!-- CSS -->
     <link rel="stylesheet" href="style.css" />
@@ -18,21 +27,34 @@
     <!-- Font Awesome -->
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   </head>
 
   <body>
+    <!-- Animated background canvas -->
+    <canvas id="bgCanvas" class="bg-canvas" aria-hidden="true"></canvas>
     <!-- ================= NAVBAR ================= -->
 
-    <header class="navbar">
+    <header class="navbar" id="navbar">
       <nav>
-        <a href="#home" class="logo">
+        <a href="#home" class="logo" aria-label="Kembali ke bagian Home">
           <i class="fa-solid fa-code"></i>
           <span>Haikal</span>
         </a>
 
-        <ul class="nav-menu">
+        <button
+          type="button"
+          class="nav-toggle"
+          id="navToggle"
+          aria-label="Buka menu navigasi"
+          aria-controls="navMenu"
+          aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <ul class="nav-menu" id="navMenu">
           <li>
             <a href="#home" class="nav-link active"> Home </a>
           </li>
@@ -46,6 +68,9 @@
           </li>
         </ul>
       </nav>
+
+      <!-- INDIKATOR PROGRES SCROLL -->
+      <div class="scroll-progress" id="scrollProgress"></div>
     </header>
 
     <!-- ================= HOME ================= -->
@@ -56,6 +81,11 @@
           <!-- TEXT -->
 
           <div class="home-content reveal-left">
+            <span class="home-badge">
+              <span class="badge-dot"></span>
+              Mahasiswa Aktif · Teknik Informatika
+            </span>
+
             <span class="small-title"> HALO, SAYA </span>
 
             <h1>
@@ -71,15 +101,6 @@
               memiliki ketertarikan terhadap teknologi, pemrograman, dan
               pengembangan sistem.
             </p>
-
-            <div class="home-buttons">
-              <a href="#biodata" class="btn-primary">
-                Lihat Biodata
-                <i class="fa-solid fa-arrow-down"></i>
-              </a>
-
-              <a href="#prodi" class="btn-secondary"> Tentang Prodi </a>
-            </div>
           </div>
 
           <!-- FOTO -->
@@ -90,6 +111,13 @@
             </div>
           </div>
         </div>
+
+        <a href="#biodata" class="scroll-hint" aria-label="Gulir ke biodata">
+          <span class="scroll-mouse">
+            <span class="scroll-wheel"></span>
+          </span>
+          Gulir ke bawah
+        </a>
       </section>
 
       <!-- ================= BIODATA ================= -->
@@ -117,16 +145,21 @@
 
             <span> Mahasiswa Teknik Informatika </span>
 
+            <span class="profile-status">
+              <i class="fa-solid fa-circle-check"></i>
+              Mahasiswa Aktif
+            </span>
+
             <div class="social">
-              <a href="#">
+              <a href="#" aria-label="GitHub">
                 <i class="fa-brands fa-github"></i>
               </a>
 
-              <a href="#">
+              <a href="#" aria-label="LinkedIn">
                 <i class="fa-brands fa-linkedin-in"></i>
               </a>
 
-              <a href="#">
+              <a href="#" aria-label="Email">
                 <i class="fa-solid fa-envelope"></i>
               </a>
             </div>
@@ -232,7 +265,7 @@
               <i class="fa-solid fa-code"></i>
             </div>
 
-            <h3>Tentang Teknik Informatika</h3>
+            <h3>Teknik Informatika</h3>
 
             <p>
               Teknik Informatika merupakan bidang ilmu yang mempelajari
@@ -246,6 +279,24 @@
               seperti pemrograman, basis data, jaringan komputer, kecerdasan
               buatan, rekayasa perangkat lunak, dan teknologi informasi lainnya.
             </p>
+
+            <!-- RINGKASAN PROGRAM STUDI -->
+            <div class="prodi-facts">
+              <div>
+                <span>Jenjang</span>
+                <p>S1</p>
+              </div>
+
+              <div>
+                <span>Gelar</span>
+                <p>S.Kom</p>
+              </div>
+
+              <div>
+                <span>Durasi</span>
+                <p>8 Semester</p>
+              </div>
+            </div>
           </div>
 
           <!-- BIDANG -->
@@ -306,6 +357,16 @@
         <span> © 2026 Haikal Muhamad Sabqi. All Rights Reserved. </span>
       </div>
     </footer>
+
+    <!-- KEMBALI KE ATAS -->
+
+    <button
+      type="button"
+      class="back-to-top"
+      id="backToTop"
+      aria-label="Kembali ke atas">
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
 
     <!-- JAVASCRIPT -->
 
